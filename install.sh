@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e  # Script bricht bei Fehler ab
+set -e  # Exit script on error
 
 echo "🔄 Updating system..."
 if [[ -f /etc/arch-release ]]; then
