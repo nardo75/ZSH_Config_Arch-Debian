@@ -42,6 +42,15 @@ echo "🐧 Installing AUR helpers (Arch only)..."
 if [[ -f /etc/arch-release ]]; then
     sudo pacman -S --noconfirm yay paru
 
+    echo "📥 Installing yay..."
+    sudo pacman -S --needed git base-devel
+    git clone https://aur.archlinux.org/yay-bin.git
+    cd yay-bin
+    makepkg -si
+
+    echo "📥 Installing auracle..."
+    yay -S auracle
+    
     echo "📥 Installing pikaur..."
     git clone https://aur.archlinux.org/pikaur.git /tmp/pikaur
     cd /tmp/pikaur && makepkg -si --noconfirm
