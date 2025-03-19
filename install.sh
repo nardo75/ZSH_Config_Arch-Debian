@@ -40,7 +40,27 @@ git clone --depth=1 https://github.com/Tarrasch/zsh-autoenv "$PLUGINS_DIR/autoen
 
 echo "🐧 Installing AUR helpers (Arch only)..."
 if [[ -f /etc/arch-release ]]; then
-    sudo pacman -S --noconfirm yay paru pikaur trizen pacaur aura
+    sudo pacman -S --noconfirm yay paru
+
+    echo "📥 Installing pikaur..."
+    git clone https://aur.archlinux.org/pikaur.git /tmp/pikaur
+    cd /tmp/pikaur && makepkg -si --noconfirm
+    cd ~ && rm -rf /tmp/pikaur
+
+    echo "📥 Installing trizen..."
+    git clone https://aur.archlinux.org/trizen.git /tmp/trizen
+    cd /tmp/trizen && makepkg -si --noconfirm
+    cd ~ && rm -rf /tmp/trizen
+
+    echo "📥 Installing pacaur..."
+    git clone https://aur.archlinux.org/pacaur.git /tmp/pacaur
+    cd /tmp/pacaur && makepkg -si --noconfirm
+    cd ~ && rm -rf /tmp/pacaur
+
+    echo "📥 Installing aura..."
+    git clone https://aur.archlinux.org/aura-bin.git /tmp/aura
+    cd /tmp/aura && makepkg -si --noconfirm
+    cd ~ && rm -rf /tmp/aura
 fi
 
 echo "🐳 Installing Docker..."
